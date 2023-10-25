@@ -128,8 +128,9 @@ public class SubastaVista {
     }
 
     public void agregaProducto(Vector<InformacionProducto> prod ) {
-
-        productos.addElement( prod );
+        for (InformacionProducto product: prod) {
+            productos.addElement(product);
+        }
     }
     public void desplegarPrecio( String precio ) {
 
@@ -153,9 +154,9 @@ public class SubastaVista {
     }
 
     public String getProductoSeleccionado() {
-        Vector<InformacionProducto> seleccionado = (Vector<InformacionProducto>)lista.getSelectedValue();
-        if (seleccionado != null && !seleccionado.isEmpty()) {
-            return seleccionado.get(0).getNombreProducto();
+        InformacionProducto seleccionado = (InformacionProducto) lista.getSelectedValue();
+        if (seleccionado != null) {
+            return seleccionado.getNombreProducto();
         }
         return null;
     }

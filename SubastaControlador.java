@@ -34,7 +34,7 @@ public class SubastaControlador implements ActionListener {
             usuario = vista.getUsuario();
             producto = vista.getProducto();
             monto = vista.getPrecioInicial();
-            System.out.println(usuario+ "está haciendo oferta del producto: " + producto + " de precio inicial: " + monto);
+            System.out.println(usuario+ " esta haciendo oferta del producto: " + producto + " de precio inicial: " + monto);
             try {
                 modelo.agregaProductoALaVenta(usuario, producto, monto);
             } catch (RemoteException e) {

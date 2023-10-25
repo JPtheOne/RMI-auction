@@ -2,6 +2,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.NotBoundException;
 import java.net.MalformedURLException;
+
+
 public class Cliente {
 
     public static void main(String[] args) {

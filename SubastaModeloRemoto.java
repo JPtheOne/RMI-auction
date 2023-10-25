@@ -14,6 +14,11 @@ public class SubastaModeloRemoto extends UnicastRemoteObject implements SubastaM
         usuarios = new Hashtable<>();
         productos = new Hashtable<>();
         ofertas = new Hashtable<>();
+
+        // Verificación
+    if (productos == null) {
+        throw new RuntimeException("productos es null después de la inicialización");
+        }
     }
 
     public boolean registraUsuario(String nombre) {
@@ -37,6 +42,11 @@ public class SubastaModeloRemoto extends UnicastRemoteObject implements SubastaM
     }
 
     public boolean agregaOferta(String comprador, String producto, float monto) {
+        // Verificación
+        if (productos == null) {
+            throw new RuntimeException("productos es null en agregaOferta");
+        }
+        
         if (productos.containsKey(producto)) {
             InformacionProducto infoProd = productos.get(producto);
             if (infoProd.actualizaPrecio(monto)) {
@@ -52,9 +62,10 @@ public class SubastaModeloRemoto extends UnicastRemoteObject implements SubastaM
     }
 
     public Vector<InformacionProducto> obtieneCatalogo() {
-        System.out.println("Catalogo solicitado");
-        Vector<InformacionProducto> resultado = new Vector<>(productos.values());
-        return resultado;
+        Vector resultado;
+
+        resultado = new Vector( productos.values() );
+            return resultado;
     }
 
 }
